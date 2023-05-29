@@ -8,18 +8,40 @@ public class step9 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(bf.readLine());
-        int num = Integer.parseInt(st.nextToken());
-
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+        int[] basket = new int[Integer.parseInt(st.nextToken())];
+        int count = Integer.parseInt(st.nextToken());
 
-        for (int i=1; i <= num; i++) {
-            String a = "";
-            for (int j=1; j <= i; j++) {
-                a += "*";
+        for (int i = 0; i < basket.length; i++) {
+            basket[i] = i + 1;
+        }
+
+        for (int i = 0; i < count; i++) {
+            st = new StringTokenizer(bf.readLine());
+            int first = Integer.parseInt(st.nextToken()) - 1;
+            int last = Integer.parseInt(st.nextToken()) - 1;
+
+            if (first != last) {
+                int t = 0;
+                int[] num = new int[last - first + 1];
+
+                for (int j = 0; j < num.length; j++) {
+                    num[j] = basket[last - j];
+                }
+
+                for (int k = first; k <= last; k++) {
+                    basket[k] = num[t];
+                    t++;
+                }
+
+
             }
-            bw.write(a);
-            bw.newLine();
+
+        }
+
+        for (int k = 0; k < basket.length; k++) {
+            bw.write(basket[k] + " ");
         }
 
         bw.flush();
