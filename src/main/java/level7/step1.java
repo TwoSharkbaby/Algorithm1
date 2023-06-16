@@ -9,25 +9,26 @@ public class step1 {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(bf.readLine());
-        int[][] result = new int[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())];
+        int[][] board = new int[9][9];
+        int max = 0;
+        int x = 0;
+        int y = 0;
 
-        for (int k = 0; k < 2; k++) {
-            for (int i = 0; i < result.length; i++) {
-                st = new StringTokenizer(bf.readLine());
-                for (int j = 0; j < result[i].length; j++) {
-                    result[i][j] = result[i][j] + Integer.parseInt(st.nextToken());
+        for (int i = 0; i < board.length; i++) {
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = Integer.parseInt(st.nextToken());
+                if (max < board[i][j]) {
+                    max = board[i][j];
+                    x = i;
+                    y = j;
                 }
             }
         }
 
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i].length; j++) {
-                bw.write(String.valueOf(result[i][j]) + " ");
-            }
-            bw.newLine();
-        }
-
+        bw.write(String.valueOf(max));
+        bw.newLine();
+        bw.write(String.valueOf((x+1) + " " + (y+1)));
         bw.flush();
         bw.close();
         bf.close();
