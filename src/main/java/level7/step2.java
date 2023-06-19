@@ -9,28 +9,26 @@ public class step2 {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        char[][] words = new char[5][15];
+        int[][] board = new int[9][9];
         int max = 0;
+        int x = 0;
+        int y = 0;
 
-        for (int i = 0; i < words.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             StringTokenizer st = new StringTokenizer(bf.readLine());
-            String word = st.nextToken();
-            if(max<word.length()){
-                max = word.length();
-            }
-            for (int j = 0; j < word.length(); j++){
-                words[i][j] = word.charAt(j);
-            }
-        }
-
-        for (int i = 0; i < max; i++){
-            for (int j = 0; j < words.length; j++){
-                if (words[j][i] != '\0'){
-                    bw.write(words[j][i]);
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = Integer.parseInt(st.nextToken());
+                if (max < board[i][j]) {
+                    max = board[i][j];
+                    x = i;
+                    y = j;
                 }
             }
         }
 
+        bw.write(String.valueOf(max));
+        bw.newLine();
+        bw.write(String.valueOf((x+1) + " " + (y+1)));
         bw.flush();
         bw.close();
         bf.close();
