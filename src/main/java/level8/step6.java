@@ -21,15 +21,14 @@ public class step6 {
         }
 
         if ((i - 1) % 2 == 0) {
-            y = 1 + (count - num);
             x = (i - 1) - (count - num);
+            y = 1 + (count - num);
         } else {
-            y = (i - 1) - (count - num);
             x = 1 + (count - num);
+            y = (i - 1) - (count - num);
         }
 
         bw.write(x + "/" + y);
-
         bw.flush();
         bw.close();
         bf.close();
