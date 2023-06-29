@@ -14,19 +14,19 @@ public class step2 {
         int[] num = {1, 1, 2, 2, 2, 8};
         int[] result = new int[6];
 
-        for (int i=0; i < chess.length; i++){
+        for (int i = 0; i < chess.length; i++) {
             chess[i] = Integer.parseInt(st.nextToken());
         }
 
-        for (int i=0; i < chess.length; i++){
-            if (chess[i] == num[i]){
+        for (int i = 0; i < chess.length; i++) {
+            if (chess[i] == num[i]) {
                 result[i] = 0;
             } else {
                 result[i] = num[i] - chess[i];
             }
         }
 
-        for(int k = 0; k < result.length; k++) {
+        for (int k = 0; k < result.length; k++) {
             bw.write(result[k] + " ");
         }
 
