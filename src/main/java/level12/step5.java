@@ -1,9 +1,9 @@
-package levle12;
+package level12;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class step6 {
+public class step5 {
 
     public static void main(String[] args) throws IOException {
 
@@ -11,7 +11,15 @@ public class step6 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int num = Integer.parseInt(st.nextToken());
-        int result = compute(num);
+        int count = 1;
+        int result = 666;
+
+        while (count != num) {
+            result++;
+            if (check(result) == true) {
+                count++;
+            }
+        }
 
         bw.write(String.valueOf(result));
         bw.flush();
@@ -19,20 +27,14 @@ public class step6 {
         bf.close();
     }
 
-    private static int compute(int num) {
-        int count = num;
-        int pack5 = 5;
-        int pack3 = 3;
-
-        for (int i = 0; i <= num / pack5; i++) {
-            for (int j = 0; j <= num / pack3; j++) {
-                if (num == (pack5 * i) + (pack3 * j)) {
-                    count = Math.min(count, i + j);
-                }
+    static boolean check(int result) {
+        String n = String.valueOf(result);
+        for (int i = 0; i < n.length() - 2; i++) {
+            if (n.charAt(i) == '6' && n.charAt(i + 1) == '6' && n.charAt(i + 2) == '6') {
+                return true;
             }
         }
-
-        return num == count ? -1 : count;
+        return false;
     }
 
 }

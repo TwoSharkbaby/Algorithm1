@@ -1,4 +1,4 @@
-package levle12;
+package level12;
 
 import java.io.*;
 import java.util.Arrays;
