@@ -1,9 +1,9 @@
 package level13;
 
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
 
-public class step7 {
+public class step10 {
 
     public static void main(String[] args) throws IOException {
 
@@ -11,21 +11,21 @@ public class step7 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int num = Integer.parseInt(st.nextToken());
-        int[][] arr = new int[num][2];
+        String[][] arr = new String[num][2];
 
         for (int i = 0; i < arr.length; i++) {
             st = new StringTokenizer(bf.readLine());
-            arr[i][0] = Integer.parseInt(st.nextToken());
-            arr[i][1] = Integer.parseInt(st.nextToken());
+            arr[i][0] = st.nextToken();
+            arr[i][1] = st.nextToken();
         }
 
-        Arrays.sort(arr, ((o1, o2) -> {
-            return o1[0] != o2[0] ? o1[0] - o2[0] : o1[1] - o2[1];
-        }));
-
-        for (int i = 0; i < arr.length; i++) {
-            bw.write(arr[i][0] + " " + arr[i][1]);
-            bw.newLine();
+        for (int i = 1; i <= 200; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i == Integer.parseInt(arr[j][0])) {
+                    bw.write(arr[j][0] + " " + arr[j][1]);
+                    bw.newLine();
+                }
+            }
         }
 
         bw.flush();
