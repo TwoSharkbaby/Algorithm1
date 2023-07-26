@@ -1,7 +1,6 @@
 package level17;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class step1 {
@@ -11,19 +10,16 @@ public class step1 {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(bf.readLine());
-        int[] n = new int[Integer.parseInt(st.nextToken())];
-        int result = 0;
+        int n = Integer.parseInt(st.nextToken());
+        int count = 0;
 
-        st = new StringTokenizer(bf.readLine());
-        for (int i = 0; i < n.length; i++) {
-            n[i] = Integer.parseInt(st.nextToken());
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                count++;
+            }
         }
 
-        Arrays.sort(n);
-
-        result = n[0] * n[n.length - 1];
-
-        bw.write(String.valueOf(result));
+        bw.write(String.valueOf(count));
         bw.flush();
         bw.close();
         bf.close();

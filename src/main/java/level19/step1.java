@@ -1,29 +1,33 @@
-package level16;
+package level19;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class step3 {
+public class step1 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(bf.readLine());
-        int n = Integer.parseInt(st.nextToken());
+        int[] n = new int[Integer.parseInt(st.nextToken())];
+        int result = 0;
 
-        bw.write(String.valueOf(factorial(n)));
+        st = new StringTokenizer(bf.readLine());
+        for (int i = 0; i < n.length; i++) {
+            n[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(n);
+
+        result = n[0] * n[n.length - 1];
+
+        bw.write(String.valueOf(result));
         bw.flush();
         bw.close();
         bf.close();
 
-    }
-
-    static int factorial(int n) {
-        if (n <= 1) {
-            return 1;
-        }
-        return n * factorial(n - 1);
     }
 
 }
